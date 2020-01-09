@@ -1,5 +1,5 @@
 {
-  "name": "common-database-configuration",
+  "name": "mbox-common-db-configuration",
   "version": "1.0.17",
   "description": "Common library for database configuration and initial data set",
   "main": "index.js",

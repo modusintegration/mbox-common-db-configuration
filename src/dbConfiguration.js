@@ -12,8 +12,8 @@ exports.setKnex = (knexOptions) => {
 // https://docs.docker.com/compose/startup-order/
 let dbRetries = 1;
 exports.runSchemaCreationIfNeeded = async (runSchemaCreation, totalRetries, waitRetry) => {
-  console.log('Initial data configuration' );
   if ((/true/i).test(runSchemaCreation)) {
+    console.log('Initial data configuration' );
     try {
       await runKnexMigrations();
       console.log(`success connected to DB and tables created after trying : ${dbRetries} time(s)`);
