@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jasf87/common-database-configuration.git"
+    "url": "git+https://github.com/modusintegration/mbox-common-db-configuration.git"
   },
   "dependencies": {
     "assignment": "^2.2.1",
