@@ -1,5 +1,5 @@
 'use strict';
-const { runSchemaCreationIfNeeded, setKnex, runInitialConfigurations } = require('./dbConfiguration');
+const { runSchemaCreationIfNeeded, setKnex, runInitialConfigurations, checkConnection } = require('./dbConfiguration');
 
 
 /**
@@ -15,7 +15,9 @@ exports.dbInit = async (knexOptions, runSchemaCreation, totalRetries, waitRetry,
   try {
 
     setKnex(knexOptions);
-    await runSchemaCreationIfNeeded(runSchemaCreation, totalRetries, waitRetry);
+
+    await checkConnection(totalRetries, waitRetry);
+    await runSchemaCreationIfNeeded(runSchemaCreation);
     await runInitialConfigurations(runData, callback);
   } catch (error) {
     console.error(error);
