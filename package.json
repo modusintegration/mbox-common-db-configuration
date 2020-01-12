@@ -1,5 +1,5 @@
 {
-  "name": "mbox-common-db-configuration",
+  "name": "@modusintegration/mbox-common-db-configuration",
   "version": "1.0.1",
   "description": "Common library for database configuration and initial data set",
   "main": "index.js",
@@ -11,6 +11,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/modusintegration/mbox-common-db-configuration.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "dependencies": {
     "assignment": "^2.2.1",

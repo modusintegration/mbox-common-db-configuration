@@ -1,7 +1,8 @@
 'use strict';
-const { knex } = require('./src/dbConfiguration');
-const { dbInit } = require('./src/app');
+const { dbInit } = require('./src/dbSetup');
 
-exports.knex = knex;
-exports.dbInit = dbInit;
+module.exports = 
+{
+    dbInit
+}
 
