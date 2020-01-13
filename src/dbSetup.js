@@ -43,7 +43,7 @@ async function checkConnection  (knex, totalRetries, waitRetry)  {
       throw e;
     } else {
       await wait(waitRetry);
-      await checkConnection(totalRetries, waitRetry);
+      await checkConnection(knex, totalRetries, waitRetry);
     }
   }
 
