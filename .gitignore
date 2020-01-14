@@ -1,0 +1,10 @@
+.env
+.idea
+node_modules/
+private/
+.vscode/
+*.bak
+dump.rdb
+.nyc_output/
+.DS_Store
+

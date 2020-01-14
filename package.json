@@ -1,10 +1,29 @@
 {
-    "name": "mbox-common-db-configuration",
-    "version": "1.0.1",
-    "description": "Common library for database configuration and initial data set",
-    "dependencies": {
-    },
-    "devDependencies": {
-    }
+  "name": "@modusintegration/mbox-common-db-configuration",
+  "version": "1.0.2",
+  "description": "Common library for database configuration and initial data set",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "./node_modules/.bin/eslint --ignore-path .gitignore src",
+    "lint:fix": "./node_modules/.bin/eslint --fix --ignore-path .gitignore src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/modusintegration/mbox-common-db-configuration.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "dependencies": {
+    "assignment": "^2.2.1",
+    "knex": "^0.19.5",
+    "mysql": "^2.17.1",
+    "sqlite3": "^4.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.1"
+  }
 }
-  
