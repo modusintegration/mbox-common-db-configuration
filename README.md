@@ -9,10 +9,10 @@ Follow the official [guideline](https://help.github.com/en/github/managing-packa
 If a project needs to install this library, the location of the npm registry needs to be updated for the @modusintegration organization, so it can retrieve it from the github package manager. A Github generated token is needed to download the package from the registry. More details about this process is also on the official [guideline](https://help.github.com/en/github/managing-packages-with-github-packages/configuring-npm-for-use-with-github-packages).
 
 - Add or update the .npmrc file on the root folder of the project that is going to use the library, with the following information:
-
+```
     > //npm.pkg.github.com/:_authToken=${GITHUB_PACKAGES_TOKEN}
     > @modusintegration:registry=https://npm.pkg.github.com
-
+```
 
 - Update the Dockerfile with :
 
