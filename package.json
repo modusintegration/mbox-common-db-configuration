@@ -1,6 +1,6 @@
 {
   "name": "@modusintegration/mbox-common-db-configuration",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Common library for database configuration and initial data set",
   "main": "index.js",
   "scripts": {
