@@ -7,13 +7,13 @@ Follow the official [guideline](https://help.github.com/en/github/managing-packa
 
 ### Installing the library from other projects
 
-If a project needs to install this library, the location of the npm registry needs to be updated for the @modusintegration organization, so it can retrieve it from the github packahe manager. A Github generated token is needed to download the package from the registry. More details about this process is also on the official [guideline](https://help.github.com/en/github/managing-packages-with-github-packages/configuring-npm-for-use-with-github-packages).
+If a project needs to install this library, the location of the npm registry needs to be updated for the @modusintegration organization, so it can retrieve it from the github package manager. A Github generated token is needed to download the package from the registry. More details about this process is also on the official [guideline](https://help.github.com/en/github/managing-packages-with-github-packages/configuring-npm-for-use-with-github-packages).
 
 - Add or update the .npmrc file on the root folder of the project that is going to use the library, with the following information:
-
+```
     > //npm.pkg.github.com/:_authToken=${GITHUB_PACKAGES_TOKEN}
     > @modusintegration:registry=https://npm.pkg.github.com
-
+```
 
 - Update the Dockerfile with :
 
@@ -42,9 +42,9 @@ If a project needs to install this library, the location of the npm registry nee
 
 
 
-### Installing the library from other projects that builds on CircleCi
+### Installing the library from other projects that build on CircleCi
 
-- Update the config.yml file inside the .circleci folder adding the line:
+- Update the `config.yml` file inside the `.circleci` folder adding the line:
 
     > extra_build_args: "--build-arg GITHUB_PACKAGES_TOKEN=$GITHUB_PACKAGES_TOKEN"
 
