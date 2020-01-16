@@ -17,6 +17,12 @@ Steps:
     @modusintegration:registry=https://npm.pkg.github.com
 ```
 
+- Actually install this library with `npm install`
+
+```bash
+npm install @modusintegration/mbox-common-db-configuration --save
+```
+
 Update the Docker related files as follows:
 
 - Update `Dockerfile` with :
