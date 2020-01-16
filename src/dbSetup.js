@@ -10,14 +10,15 @@
   * @param {number} waitRetry (miliseconds to wait for retry)
   * @param {boolean} runData (boolean)
   * @param {function} callback (callback function for initial data configuration)
+  * @param {boolean} runDbSeed (boolean to run knex seeding)
   */
-const dbInit = async (knex, runSchemaCreation, totalRetries, waitRetry, runData, callback) => {
+const dbInit = async (knex, runSchemaCreation, totalRetries, waitRetry, runData, callback, runDbSeed) => {
 
   try {
 
     await checkConnection(knex, totalRetries, waitRetry);
     await runSchemaCreationIfNeeded(knex, runSchemaCreation);
-    await runInitialConfigurations(runData, callback);
+    await runInitialConfigurations(runData, callback, knex, runDbSeed);
   } catch (error) {
     console.error(error);
     console.error('Application is not starting');
@@ -75,12 +76,23 @@ async function runKnexMigrations (knex) {
   console.log('Migration done');
 }
 
-async function runInitialConfigurations (runData, callback)  {
+async function runInitialConfigurations (runData, callback, knex, runDbSeed)  {
   if ((/true/i).test(runData)) {
     console.log('Now running initial data configurations');
     await callback();
+    await runKnexSeed(knex, runDbSeed);
   } else {
     console.log('Not running initial configurations');
+  }
+}
+
+async function runKnexSeed (knex, runDbSeed)  {
+  if ((/true/i).test(runDbSeed)) {
+    !process.env.TEST && console.log('Seeding');
+    await knex.seed.run();
+    !process.env.TEST && console.log('Seeding done');
+  } else {
+    !process.env.TEST && console.log('Not running seeding');
   }
 }
 
