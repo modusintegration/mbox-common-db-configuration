@@ -20,6 +20,8 @@ If a project needs to install this library, the location of the npm registry nee
 ```
     ARG GITHUB_PACKAGES_TOKEN
 
+    ENV GITHUB_PACKAGES_TOKEN=$GITHUB_PACKAGES_TOKEN
+
     COPY .npmrc .npmrc
 
     RUN npm install
