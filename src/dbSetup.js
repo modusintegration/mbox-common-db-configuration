@@ -32,12 +32,12 @@ const dbInit = async (knex, runSchemaCreation, totalRetries, waitRetry, runData,
 let dbRetries = 1;
 async function checkConnection  (knex, totalRetries, waitRetry)  {
   try {
-    console.log('Checking connection...');
+    !process.env.TEST && console.log('Checking connection...');
     await knex.raw('select 1+1 as result');
-    console.log(`success connected to DB after trying : ${dbRetries} time(s)`);
+    !process.env.TEST && console.log(`success connected to DB after trying : ${dbRetries} time(s)`);
   } catch (e) {
     console.error('Error connecting to the database', e);
-    console.log(`Attempting retry: ${dbRetries}`);
+    !process.env.TEST && console.log(`Attempting retry: ${dbRetries}`);
     dbRetries++;
     if (dbRetries === totalRetries) {
       console.error('could not get connection to DB after retries');
@@ -53,10 +53,10 @@ async function checkConnection  (knex, totalRetries, waitRetry)  {
 
 async function runSchemaCreationIfNeeded  (knex, runSchemaCreation) {
   if ((/true/i).test(runSchemaCreation)) {
-    console.log('Initial data configuration' );
+    !process.env.TEST && console.log('Initial data configuration' );
     try {
       await runKnexMigrations(knex);
-      console.log('success tables created ');
+      !process.env.TEST && console.log('success tables created ');
     } catch (e) {
       console.error('error happened in the DB', e);
       throw e;
@@ -71,18 +71,18 @@ async function wait (ms) {
 }
 
 async function runKnexMigrations (knex) {
-  console.log('Migrating');
+  !process.env.TEST && console.log('Migrating');
   await knex.migrate.latest();
-  console.log('Migration done');
+  !process.env.TEST && console.log('Migration done');
 }
 
 async function runInitialConfigurations (runData, callback, knex, runDbSeed)  {
   if ((/true/i).test(runData)) {
-    console.log('Now running initial data configurations');
+    !process.env.TEST && console.log('Now running initial data configurations');
     await callback();
     await runKnexSeed(knex, runDbSeed);
   } else {
-    console.log('Not running initial configurations');
+    !process.env.TEST && console.log('Not running initial configurations');
   }
 }
 
